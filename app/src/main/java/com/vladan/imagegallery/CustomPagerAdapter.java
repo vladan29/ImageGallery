@@ -2,12 +2,12 @@ package com.vladan.imagegallery;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -19,34 +19,39 @@ public class CustomPagerAdapter extends PagerAdapter {
 
     Activity activity;
     LayoutInflater layoutInflater;
-   ArrayList<Bitmap> imageList;
+    ArrayList<Integer> pickImageId = new ArrayList<>();
 
-    public CustomPagerAdapter(Activity activity, ArrayList<Bitmap> imageList){
-        this.activity=activity;
-        this.imageList=imageList;
+    public CustomPagerAdapter(Activity activity, ArrayList<Integer> pickImageId) {
+        this.activity = activity;
+        this.pickImageId = pickImageId;
     }
 
     @Override
     public int getCount() {
-        return imageList.size();
+        return pickImageId.size();
     }
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view==object;
+        return view == object;
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container, final int position) {
 
-        if (layoutInflater==null)
-            layoutInflater=(LayoutInflater)activity
+        if (layoutInflater == null)
+            layoutInflater = (LayoutInflater) activity
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View itemView=layoutInflater.inflate(R.layout.pager_item,container,false);
-        ImageView imageView=(ImageView)itemView.findViewById(R.id.pager_image);
-        imageView.setImageBitmap(imageList.get(position));
+        View itemView = layoutInflater.inflate(R.layout.pager_item, container, false);
+        ImageView imageView = (ImageView) itemView.findViewById(R.id.pager_image);
+        imageView.setImageResource(pickImageId.get(position));
         container.addView(itemView);
 
         return itemView;
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        container.removeView((LinearLayout) object);
     }
 }

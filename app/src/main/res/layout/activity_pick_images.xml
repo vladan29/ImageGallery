@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="#bed9b3"
     android:orientation="vertical"
     tools:context="com.vladan.imagegallery.PickImagesActivity">
 
@@ -12,51 +12,25 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"
-        android:background="@drawable/my_shape"
+        android:background="@drawable/button_shape"
         android:text="PICK IMAGE" />
 
     <FrameLayout
+        android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_margin="10dp"
-        android:background="#ffffff"
-        android:scrollbarAlwaysDrawHorizontalTrack="true">
+        android:background="#bed9b3">
 
-        <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/pager"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="@drawable/my_shape" />
-
-        <ImageButton
-            android:id="@+id/left_nav"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical|start"
-            android:contentDescription="@string/contentDesLow"
-            android:src="@drawable/ic_chevron_left_black_24dp" />
-
-        <ImageButton
-            android:id="@+id/right_nav"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical|end"
-            android:contentDescription="@string/contentDesLow"
-            android:src="@drawable/ic_chevron_right_black_24dp" />
-
-        <TextView
-            android:id="@+id/image_label"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_gravity="bottom"
-            android:gravity="center_horizontal|center_vertical"
-            android:hint="@string/app_name" />
 
     </FrameLayout>
 
-    <EditText
-        android:id="@+id/write_image_label"
+    <Button
+        android:id="@+id/set_image_button"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="10dp" />
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_shape"
+        android:text="SET IMAGE" />
+
 </LinearLayout>
